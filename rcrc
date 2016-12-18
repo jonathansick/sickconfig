@@ -1,0 +1,3 @@
+DOTFILES_DIRS="~/sickconfig"
+EXCLUDES="README.md LICENSE"
+UNDOTTED="bin"
