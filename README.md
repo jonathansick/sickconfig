@@ -9,7 +9,7 @@ These dotfiles are part of a trio of rcm configuration repositories:
 
 ## Installation
 
-To setup a new Mac, first install rcm:
+To set up a new Mac, first install rcm:
 
 ```bash
 brew tap thoughtbot/formulae
@@ -76,3 +76,12 @@ Post-install hooks in the sickvim and sickconfig repos will install Vim ([vim-pl
   brew tap thoughtbot/formulae
   brew install rcm
   ```
+
+- Install the GPG Keychain:
+
+  ```
+  brew tap Caskroom/cask
+  brew install gpgtools
+  ```
+
+  Then import existing keypairs into GPG Keychain.
