@@ -31,3 +31,48 @@ When new dotfiles are added, the `rcup` command may be repeated.
 
 An initial `rcup` run may require some dependencies (see below).
 Post-install hooks in the sickvim and sickconfig repos will install Vim ([vim-plug](https://github.com/junegunn/vim-plug)) and tmux ([tpm](https://github.com/tmux-plugins/tpm)) plugins.
+
+## Appendix: Mac set up notes
+
+- Download Xcode from the Mac App Store, install, then install the command line tools:
+
+  ```bash
+  xcode-select --install
+  ```
+
+- Install [Homebrew](http://brew.sh).
+
+- Install the basics:
+
+  ```bash
+  brew install python python3 zsh git hub tmux reattach-to-user-namespace ctags ack z ruby node
+  ```
+
+- Enable zsh as the default shell:
+
+  ```bash
+  chsh -s $(which zsh)
+  ```
+
+- Install Python virtualenv:
+
+  ```bash
+  pip install -U pip
+  pip install virtualenv virtualenvwrapper
+  ```
+
+- Install [pipsi](https://github.com/mitsuhiko/pipsi) and command line python apps:
+
+  ```bash
+  curl https://raw.githubusercontent.com/mitsuhiko/pipsi/master/get-pipsi.py | python
+  pipsi install flake8
+  pipsi install Pygments
+  pipsi install httpie
+  ```
+
+- Install rcm:
+
+  ```bash
+  brew tap thoughtbot/formulae
+  brew install rcm
+  ```
