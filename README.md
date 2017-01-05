@@ -85,3 +85,16 @@ Post-install hooks in the sickvim and sickconfig repos will install Vim ([vim-pl
   ```
 
   Then import existing keypairs into GPG Keychain.
+
+- Xquartz
+
+  ```
+  brew install Caskroom/cask/xquartz
+  ```
+
+- DS9 (FITS viewer)
+
+  ```
+  brew tap homebrew/science
+  brew install homebrew/science/ds9
+  ```
