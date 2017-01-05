@@ -32,7 +32,7 @@ fi
 export PATH=$HOME/.local/bin:$PATH
 
 # iterm2 shell integration
-if [[ -f ~/.iterm2_shell_integration.`basename $SHELL` ]] ; source ~/.iterm2_shell_integration.`basename $SHELL` fi
+if [[ -f ~/.iterm2_shell_integration.`basename $SHELL` ]] ; then source ~/.iterm2_shell_integration.`basename $SHELL` ; fi
 
 # Setup rbenv for managing Ruby environments
 # for shims and automcompletion
