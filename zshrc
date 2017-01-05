@@ -39,5 +39,8 @@ if [[ -f ~/.iterm2_shell_integration.`basename $SHELL` ]] ; source ~/.iterm2_she
 # Default directory is ~/.rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
+# Enable Travis Gem
+[ -f /Users/jsick/.travis/travis.sh ] && source /Users/jsick/.travis/travis.sh
+
 # Local settings (from secret-dotfiles)
 if [[ -s $HOME/.zshrc_local ]] ; then source $HOME/.zshrc_local ; fi
