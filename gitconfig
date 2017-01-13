@@ -79,5 +79,9 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 
+# old configuration for LFS pre 1.2
+[lfs]
+    batch = false
+
 [include]
 	path = ~/.gitconfig_local
