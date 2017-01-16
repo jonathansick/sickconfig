@@ -67,8 +67,23 @@
 [difftool]
 	prompt = false
 
+[diff]
+	indentHeuristic = true
+
+[commit]
+	verbose = true
+
+[rebase]
+	autostash = true
+
 [push]
 	default = current
+
+[stash]
+	showPatch = true
+
+[submodule]
+	fetchJobs = 4
 
 [mergetool]
 	keepBackup = true
