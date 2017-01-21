@@ -1,32 +1,32 @@
-# Based on https://github.com/dfm/dotfiles
+# vi bindings
+#
+# https://dougblack.io/words/zsh-vi-mode.html
 
-bindkey -e
-bindkey '\ew' kill-region
-bindkey -s '\el' "ls\n"
-bindkey -s '\e.' "..\n"
-bindkey '^r' history-incremental-search-backward
-bindkey "^[[5~" up-line-or-history
-bindkey "^[[6~" down-line-or-history
+# vi-mode
+bindkey -v
 
-# make search up and down work, so partially type and hit up/down to find relevant stuff
-bindkey '^[[A' up-line-or-search
-bindkey '^[[B' down-line-or-search
+# Use vim cli mode
+bindkey '^P' up-history
+bindkey '^N' down-history
 
-bindkey "^[[H" beginning-of-line
-bindkey "^[[1~" beginning-of-line
-bindkey "^[OH" beginning-of-line
-bindkey "^[[F"  end-of-line
-bindkey "^[[4~" end-of-line
-bindkey "^[OF" end-of-line
-bindkey ' ' magic-space    # also do history expansion on space
-
-bindkey "^[[1;5C" forward-word
-bindkey "^[[1;5D" backward-word
-
-bindkey '^[[Z' reverse-menu-complete
-
-# Make the delete key (or Fn + Delete on the Mac) work instead of outputting a ~
+# backspace and ^h working even after returning from command mode
 bindkey '^?' backward-delete-char
-bindkey "^[[3~" delete-char
-bindkey "^[3;5~" delete-char
-bindkey "\e[3~" delete-char
+bindkey '^h' backward-delete-char
+
+# ctrl-w removed word backwards
+bindkey '^w' backward-kill-word
+
+# ctrl-r starts searching history backward
+bindkey '^r' history-incremental-search-backward
+
+# Note, the right prompt is now being set here, rather than in jsick_vcs_info
+function zle-line-init zle-keymap-select {
+    VIM_PROMPT="%{$fg[red]%} [% NORMAL]%  %{$reset_color%}"
+    RPROMPT="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} %{$fg[blue]%}$(virtualenv_info)%{$fg[yellow]%}%n@%m %~%{$reset_color%} %(?..%{$fg[red]%}%? ↵%{$reset_color%})"
+    zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+
+export KEYTIMEOUT=1
