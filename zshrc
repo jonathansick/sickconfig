@@ -42,5 +42,9 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 # Enable Travis Gem
 [ -f /Users/jsick/.travis/travis.sh ] && source /Users/jsick/.travis/travis.sh
 
+# Enable glcoud-sdk and bindings from homebrew
+if [[ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc ]] ; then source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc ; fi
+if [[ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc ]] ; then source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc ; fi
+
 # Local settings (from secret-dotfiles)
 if [[ -s $HOME/.zshrc_local ]] ; then source $HOME/.zshrc_local ; fi
