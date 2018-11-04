@@ -36,6 +36,15 @@ if (( $+commands[virtualenvwrapper.sh] )) ; then
     export PIP_RESPECT_VIRTUALENV=true
 fi
 
+# Directories for vim and neovim configs
+export VIMCONFIG=~/.vim
+export VIMDATA=~/.vim
+export NVIMCONFIG=~/.config/nvim
+export NVIMDATA=~/.local/share/nvim
+
+# Use vim as the preferred editor
+export VISUAL=vim
+
 # pipsi for isolated Python scripts
 # https://github.com/mitsuhiko/pipsi
 export PATH=$HOME/.local/bin:$PATH
