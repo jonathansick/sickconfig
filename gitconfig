@@ -3,7 +3,7 @@
 	email = jsick@lsst.org
 
 [core]
-	editor = vim
+	editor = nvim
 	excludesfile = ~/.gitexcludes
 
 [color]

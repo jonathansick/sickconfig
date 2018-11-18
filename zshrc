@@ -42,8 +42,11 @@ export VIMDATA=~/.vim
 export NVIMCONFIG=~/.config/nvim
 export NVIMDATA=~/.local/share/nvim
 
-# Use vim as the preferred editor
-export VISUAL=vim
+# Use nvim as the preferred editor
+export VISUAL=nvim
+# Use nvim full-time
+alias vim=nvim
+alias vi=nvim
 
 # pipsi for isolated Python scripts
 # https://github.com/mitsuhiko/pipsi
