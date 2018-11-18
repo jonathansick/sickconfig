@@ -77,6 +77,13 @@ Post-install hooks in the sickvim and sickconfig repos will install Vim ([vim-pl
   brew install rcm
   ```
 
+- Install NPM/Node and related tools:
+
+  ```bash
+  brew install node
+  npm install -g gulp prettier
+  ```
+
 - Install the GPG Keychain:
 
   ```
