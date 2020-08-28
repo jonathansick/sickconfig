@@ -89,6 +89,12 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
+# pyenv
+# https://github.com/pyenv/pyenv
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
 # Platform-specific settings (from tagged architectures)
 if [[ -s $HOME/.zshrc_arch ]] ; then source $HOME/.zshrc_arch ; fi
 
@@ -109,4 +115,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
