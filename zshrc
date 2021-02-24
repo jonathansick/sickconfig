@@ -13,28 +13,37 @@ export PATH=$HOME/bin:$PATH
 # Cache PIP for speed (great for setting up virtual environments)
 export PIP_DOWNLOAD_CACHE=$HOME/.pip_download_cache
 
+# pyenv
+# https://github.com/pyenv/pyenv
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+if which pyenv-virtualenv-init > /dev/null; then
+  eval "$(pyenv virtualenv-init -)"
+fi
+
 # Setup virtualenvwrapper
 # Running this after all the python paths have been set up
 # http://virtualenvwrapper.readthedocs.org/en/latest/index.html
-if (( $+commands[virtualenvwrapper.sh] )) ; then
-    # virtualenvwrapper exists
+# if (( $+commands[virtualenvwrapper.sh] )) ; then
+#     # virtualenvwrapper exists
     
-    # Use python3 with virtualenvwrapper if available
-    if which python3 > /dev/null 2>&1; then
-        export VIRTUALENVWRAPPER_PYTHON=`which python3`
-    fi
+#     # Use python3 with virtualenvwrapper if available
+#     if which python3 > /dev/null 2>&1; then
+#         export VIRTUALENVWRAPPER_PYTHON=`which python3`
+#     fi
 
-    # Set up directory to store environments/settings
-    export WORKON_HOME=$HOME/.virtualenvs
-    mkdir -p $WORKON_HOME
+#     # Set up directory to store environments/settings
+#     export WORKON_HOME=$HOME/.virtualenvs
+#     mkdir -p $WORKON_HOME
 
-    source virtualenvwrapper.sh
+#     source virtualenvwrapper.sh
 
-    # Sync up virtualenv with virtualenvwrapper
-    export PIP_VIRTUALENV_BASE=$WORKON_HOME
-    # pip always installs in the active virtualenv
-    export PIP_RESPECT_VIRTUALENV=true
-fi
+#     # Sync up virtualenv with virtualenvwrapper
+#     export PIP_VIRTUALENV_BASE=$WORKON_HOME
+#     # pip always installs in the active virtualenv
+#     export PIP_RESPECT_VIRTUALENV=true
+# fi
 
 # Directories for vim and neovim configs
 export VIMCONFIG=~/.vim
@@ -88,12 +97,6 @@ load-nvmrc() {
 }
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
-
-# pyenv
-# https://github.com/pyenv/pyenv
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
 
 # Platform-specific settings (from tagged architectures)
 if [[ -s $HOME/.zshrc_arch ]] ; then source $HOME/.zshrc_arch ; fi
