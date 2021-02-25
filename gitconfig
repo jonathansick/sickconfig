@@ -1,6 +1,5 @@
 [user]
 	name = Jonathan Sick
-	email = jsick@lsst.org
 
 [core]
 	editor = nvim
