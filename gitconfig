@@ -1,6 +1,9 @@
 [user]
 	name = Jonathan Sick
 
+[init]
+	defaultBranch = main
+
 [core]
 	editor = nvim
 	excludesfile = ~/.gitexcludes
