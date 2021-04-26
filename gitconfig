@@ -1,5 +1,6 @@
 [user]
 	name = Jonathan Sick
+	email = jonathan@jsick.codes
 
 [init]
 	defaultBranch = main
