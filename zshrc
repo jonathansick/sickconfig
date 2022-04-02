@@ -27,7 +27,7 @@ fi
 # http://virtualenvwrapper.readthedocs.org/en/latest/index.html
 # if (( $+commands[virtualenvwrapper.sh] )) ; then
 #     # virtualenvwrapper exists
-    
+
 #     # Use python3 with virtualenvwrapper if available
 #     if which python3 > /dev/null 2>&1; then
 #         export VIRTUALENVWRAPPER_PYTHON=`which python3`
