@@ -11,7 +11,7 @@ export LANG="en_ca.UTF-8"
 # Increase max file desriptors on Mac
 # Note you also need to increase limit via lingon
 # i.e. Create a User Agent that runs 'limit maxfiles 256000'
-ulimit -n 8192 256000
+# ulimit -n 8192 256000
 
 # ####
 # Path
