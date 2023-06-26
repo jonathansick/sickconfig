@@ -23,9 +23,6 @@ if [[ -d "/usr/local/MacGPG2/bin" ]] ; then export PATH=/usr/local/MacGPG2/bin:$
 # Setup MacTex
 if [[ -d "/Library/TeX/texbin" ]] ; then export PATH=/Library/TeX/texbin:$PATH ; fi
 
-# Added by the Heroku Toolbelt
-if [[ -d "/usr/local/heroku/bin" ]] ; then export PATH="/usr/local/heroku/bin:$PATH" ; fi
-
 # For node homebrew
 if [[ -d "/usr/local/opt/icu4c/bin" ]] ; then export PATH="/usr/local/opt/icu4c/bin:$PATH" ; fi
 if [[ -d "/usr/local/opt/icu4c/sbin" ]] ; then export PATH="/usr/local/opt/icu4c/sbin:$PATH" ; fi
