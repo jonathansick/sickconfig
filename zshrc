@@ -22,6 +22,9 @@ if which pyenv-virtualenv-init > /dev/null; then
   eval "$(pyenv virtualenv-init -)"
 fi
 
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # Directories for vim and neovim configs
 export VIMCONFIG=~/.vim
 export VIMDATA=~/.vim
