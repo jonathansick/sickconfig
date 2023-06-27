@@ -61,14 +61,6 @@ alias vi=nvim
 # https://github.com/mitsuhiko/pipsi
 export PATH=$HOME/.local/bin:$PATH
 
-# Setup rbenv for managing Ruby environments
-# for shims and automcompletion
-# Default directory is ~/.rbenv
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-# Enable Travis Gem
-[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
-
 # nvm bash completion
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
