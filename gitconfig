@@ -1,6 +1,24 @@
 [user]
 	name = Jonathan Sick
 	email = jonathan@jsick.codes
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIpH6lknA+9kbsqz+b+Z6VBldpzkmEYKPaE9DbJ6YfLj
+
+[gpg]
+ 	format = ssh
+
+[gpg "ssh"]
+ 	program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[commit]
+ 	gpgsign = true
+
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
 
 [init]
 	defaultBranch = main
@@ -101,5 +119,5 @@
 	process = git-lfs filter-process
 
 # Include personalized/architecturally specific configurations
-[include]
-	path = ~/.gitconfig_local
+[includeIf "gitdir:~/code/lsst*/"]
+	path = ~/.gitconfig_rubin
