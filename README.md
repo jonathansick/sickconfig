@@ -18,8 +18,9 @@ brew install rcm
 Then clone and link the cascade of configuration repos:
 
 ```bash
-git clone https://github.com/jonathansick/sickconfig.git ~/code/jonathansick/sickconfig
-env RCRC=~/code/jonathansick/sickconfig rcup -t mac -d ~/code/jonathansick/sickconfig
+git clone https://github.com/jonathansick/sickconfig ~/code/jonathansick/sickconfig
+git clone https://github.com/jonathansick/sickvim ~/code/jonathansick/sickvim
+env RCRC=~/code/jonathansick/sickconfig rcup -t mac -d ~/code/jonathansick/sickconfig -d ~/code/jonathansick/sickvim
 ```
 
 When new dotfiles are added, the `rcup` command may be repeated.
