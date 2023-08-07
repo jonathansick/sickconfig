@@ -71,6 +71,14 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
+# pnpm
+export PNPM_HOME="/Users/jsick/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
 # Platform-specific settings (from tagged architectures)
 if [[ -s $HOME/.zshrc_arch ]] ; then source $HOME/.zshrc_arch ; fi
 
