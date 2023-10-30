@@ -27,6 +27,9 @@ if [[ -d "/Library/TeX/texbin" ]] ; then export PATH=/Library/TeX/texbin:$PATH ;
 if [[ -d "/usr/local/opt/icu4c/bin" ]] ; then export PATH="/usr/local/opt/icu4c/bin:$PATH" ; fi
 if [[ -d "/usr/local/opt/icu4c/sbin" ]] ; then export PATH="/usr/local/opt/icu4c/sbin:$PATH" ; fi
 
+# For postgres homebrew
+if [[ -d "/usr/local/opt/postgresql@15/bin" ]] ; then export PATH="/usr/local/opt/postgresql@15/bin:$PATH" ; fi
+
 # ############
 # Enable stuff
 # ############
