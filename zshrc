@@ -22,28 +22,8 @@ if which pyenv-virtualenv-init > /dev/null; then
   eval "$(pyenv virtualenv-init -)"
 fi
 
-# Setup virtualenvwrapper
-# Running this after all the python paths have been set up
-# http://virtualenvwrapper.readthedocs.org/en/latest/index.html
-# if (( $+commands[virtualenvwrapper.sh] )) ; then
-#     # virtualenvwrapper exists
-
-#     # Use python3 with virtualenvwrapper if available
-#     if which python3 > /dev/null 2>&1; then
-#         export VIRTUALENVWRAPPER_PYTHON=`which python3`
-#     fi
-
-#     # Set up directory to store environments/settings
-#     export WORKON_HOME=$HOME/.virtualenvs
-#     mkdir -p $WORKON_HOME
-
-#     source virtualenvwrapper.sh
-
-#     # Sync up virtualenv with virtualenvwrapper
-#     export PIP_VIRTUALENV_BASE=$WORKON_HOME
-#     # pip always installs in the active virtualenv
-#     export PIP_RESPECT_VIRTUALENV=true
-# fi
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Directories for vim and neovim configs
 export VIMCONFIG=~/.vim
@@ -61,58 +41,46 @@ alias vi=nvim
 # https://github.com/mitsuhiko/pipsi
 export PATH=$HOME/.local/bin:$PATH
 
-# Setup rbenv for managing Ruby environments
-# for shims and automcompletion
-# Default directory is ~/.rbenv
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-# Enable Travis Gem
-[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
-
 # nvm bash completion
-[[ -r $NVM_DIR/bash_completion ]] && \. $NVM_DIR/bash_completion
-
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 # Auto nvm use when in a directory with .nvmrc
+# place this after nvm initialization!
 autoload -U add-zsh-hook
+
 load-nvmrc() {
-  local node_version="$(nvm version)"
-  local nvmrc_path="$(nvm_find_nvmrc)"
+  local nvmrc_path
+  nvmrc_path="$(nvm_find_nvmrc)"
 
   if [ -n "$nvmrc_path" ]; then
-    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+    local nvmrc_node_version
+    nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
 
     if [ "$nvmrc_node_version" = "N/A" ]; then
       nvm install
-    elif [ "$nvmrc_node_version" != "$node_version" ]; then
+    elif [ "$nvmrc_node_version" != "$(nvm version)" ]; then
       nvm use
     fi
-  elif [ "$node_version" != "$(nvm version default)" ]; then
+  elif [ -n "$(PWD=$OLDPWD nvm_find_nvmrc)" ] && [ "$(nvm version)" != "$(nvm version default)" ]; then
     echo "Reverting to nvm default version"
     nvm use default
   fi
 }
+
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
+
+# pnpm
+export PNPM_HOME="/Users/jsick/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
 
 # Platform-specific settings (from tagged architectures)
 if [[ -s $HOME/.zshrc_arch ]] ; then source $HOME/.zshrc_arch ; fi
 
 # Local settings (from secret-dotfiles)
 if [[ -s $HOME/.zshrc_local ]] ; then source $HOME/.zshrc_local ; fi
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/jsick/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/jsick/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/jsick/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/jsick/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

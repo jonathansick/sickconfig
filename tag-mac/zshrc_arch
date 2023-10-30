@@ -11,7 +11,7 @@ export LANG="en_ca.UTF-8"
 # Increase max file desriptors on Mac
 # Note you also need to increase limit via lingon
 # i.e. Create a User Agent that runs 'limit maxfiles 256000'
-ulimit -n 8192 256000
+# ulimit -n 8192 256000
 
 # ####
 # Path
@@ -23,32 +23,33 @@ if [[ -d "/usr/local/MacGPG2/bin" ]] ; then export PATH=/usr/local/MacGPG2/bin:$
 # Setup MacTex
 if [[ -d "/Library/TeX/texbin" ]] ; then export PATH=/Library/TeX/texbin:$PATH ; fi
 
-# Added by the Heroku Toolbelt
-if [[ -d "/usr/local/heroku/bin" ]] ; then export PATH="/usr/local/heroku/bin:$PATH" ; fi
-
 # For node homebrew
 if [[ -d "/usr/local/opt/icu4c/bin" ]] ; then export PATH="/usr/local/opt/icu4c/bin:$PATH" ; fi
 if [[ -d "/usr/local/opt/icu4c/sbin" ]] ; then export PATH="/usr/local/opt/icu4c/sbin:$PATH" ; fi
+
+# For postgres homebrew
+if [[ -d "/usr/local/opt/postgresql@15/bin" ]] ; then export PATH="/usr/local/opt/postgresql@15/bin:$PATH" ; fi
 
 # ############
 # Enable stuff
 # ############
 
 # Enable z (from Homebrew)
-if [[ -f "/usr/local/etc/profile.d/z.sh" ]] ; then source /usr/local/etc/profile.d/z.sh ; fi
+if [[ -f "/opt/homebrew/profile.d/z.sh" ]] ; then
+    . /usr/local/etc/profile.d/z.sh
+fi
 
 # iterm2 shell integration
 if [[ -f ~/.iterm2_shell_integration.`basename $SHELL` ]] ; then source ~/.iterm2_shell_integration.`basename $SHELL` ; fi
 
 # Enable glcoud-sdk and bindings (from Homebrew)
-if [[ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc ]] ; then source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc ; fi
-if [[ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc ]] ; then source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc ; fi
+if [[ -f "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc" ]] ; then
+    source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+fi
+if [[ -f "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc" ]] ; then
+    source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
+fi
 
 # #######
 # Aliases
 # #######
-
-# mkvirtualenv aliases to use Homebrew python3 by default
-alias mkve='mkvirtualenv --no-site-packages --python=/usr/local/bin/python3'
-alias mkve3='mkvirtualenv --no-site-packages --python=/usr/local/bin/python3'
-alias mkve2='mkvirtualenv --no-site-packages --python=/usr/bin/python'

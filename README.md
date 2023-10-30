@@ -12,17 +12,15 @@ These dotfiles are part of a trio of rcm configuration repositories:
 To set up a new Mac, first install rcm:
 
 ```bash
-brew tap thoughtbot/formulae
 brew install rcm
 ```
 
 Then clone and link the cascade of configuration repos:
 
 ```bash
-git clone https://github.com/jonathansick/sickvim.git ~/sickvim
-git clone https://github.com/jonathansick/sickconfig.git ~/sickconfig
-export rcrc="~/secret-dotfiles/rcrc"  # first time only
-rcup -t mac -d ~/secret-dotfiles -d ~/sickvim -d ~/sickconfig
+git clone https://github.com/jonathansick/sickconfig ~/code/jonathansick/sickconfig
+git clone https://github.com/jonathansick/sickvim ~/code/jonathansick/sickvim
+env RCRC=~/code/jonathansick/sickconfig rcup -t mac -d ~/code/jonathansick/sickconfig -d ~/code/jonathansick/sickvim
 ```
 
 When new dotfiles are added, the `rcup` command may be repeated.
